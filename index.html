@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Snake 2d</title>
+</head>
+
+<body>
+
+  <div class="game-form">
+    <img class="logo" src="images/logo Snake-Game.png" alt="logo">
+    <h2 class="game-form__title">Напишите количество клеток от 3 до 100:</h1>
+    <form class="game-form__width">
+      <label class="input-width__title" for="input-width">В ширину</label>
+      <input id="input-width" type="number" placeholder="от 3 до 100">
+    </form>
+    <form class="game-form__height">
+      <label class="input-height__title" for="input-height">В высоту</label>
+      <input id="input-height" type="number" placeholder="от 3 до 100">
+    </form>
+    <button id="btn-input" type="submit">Создать поле</button>
+  </div>
+  
+  <div id="game">
+    <div class="game-header">
+
+      <div class="best-game-score">
+        <div class="best-score-count">Record:</div>
+      </div>
+
+      <div class="game-score">
+        <div class="score-count">0</div>
+      </div>
+
+      <button id="btnRestart">
+        Start<br>
+        Game
+      </button>
+    </div>
+
+    <div class="control-phone">
+      <button class="btn-arrow up"><img class="img-arrow" src="images/arrow-up.svg" alt="arrow"></button>
+      <div class="left-right">
+        <button class="btn-arrow left"><img class="img-arrow" src="images/arrow-left.svg" alt="arrow"></button>
+        <button class="btn-arrow right"><img class="img-arrow" src="images/arrow-right.svg" alt="arrow"></button>
+      </div>
+      <button class="btn-arrow down"><img class="img-arrow" src="images/arrow-down.svg" alt="arrow"></button>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>
