@@ -3,7 +3,7 @@ let field = document.createElement("div");
 gameInner.after(field);
 field.classList.add("field");
 
-let sizeField = 200;
+let sizeField = 500;
 
 for (let i = 1; i < sizeField + 1; i++) {
     let excel = document.createElement("div");

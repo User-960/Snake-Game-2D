@@ -44,3 +44,22 @@
     color: #ffffff;
   }
 }
+
+.field {
+  // width: 320px;
+  // height: 400px;
+  margin: 0 auto;
+  margin-bottom: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $color-black-field;
+  border-radius: 5px;
+  border: 10px solid $color-black-field;
+  box-shadow: $box-shadow-field;
+}
+
+.excel {
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.2'%3E%3Ccircle cx='8' cy='8' r='4' fill='%23525053'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
