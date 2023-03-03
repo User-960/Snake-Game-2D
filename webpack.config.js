@@ -27,9 +27,16 @@ module.exports = {
   target,
   devtool,
   devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
     port: process.env.PORT || 3000,
     open: true,
     hot: true,
+  },
+  stats: {
+    children: false,
+    modulesSpace: 0,
   },
   entry: ["@babel/polyfill", path.resolve(__dirname, 'src', 'index.js')],
   output: {
