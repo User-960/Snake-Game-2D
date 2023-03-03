@@ -1,4 +1,72 @@
 .game {
+  &__form {
+    width: 280px;
+    height: 290px;
+    background-color: $color-black-field;
+    position: relative;
+    margin: auto;
+    padding: $spacing-small;
+    border-radius: 15px;
+  }
+  &__logo {
+    width: 40px;
+    height: 40px;
+    margin-left: 43%;
+  }
+  &__form-title {
+    font-size: 22px;
+    color: $color-red;
+    padding: $spacing-small;
+    margin-top: 0px;
+    margin-bottom: $spacing-small;
+  }
+  &__form-width,
+  &__form-height {
+    padding: $spacing-small;
+  }
+  &__btn-input {
+    border: 0;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 5px;
+    background-color: $color-dark;
+    color: $color-white;
+    font-size: 15px;
+    &:hover {
+      border: 2px solid $color-red;
+    }
+  }
+}
+
+.input-width__title,
+.input-height__title {
+  color: $color-white;
+  font-size: 14px;
+}
+
+.input-width__title {
+  margin-right: 27px;
+}
+
+.input-height__title {
+  margin-right: 23px;
+}
+
+.input-width,
+.input-height {
+  width: 126px;
+  height: 25px;
+  border: 3px;
+  border-radius: 2px;
+  padding-left: 5px;
+  outline-color: $color-red;
+  outline-width: 1px;
+  outline-style: solid;
+}
+
+.game {
   display: flex;
   flex-direction: column;
   justify-content: center;
