@@ -41,4 +41,19 @@ document.querySelector(".game__btn-input").onclick = () => {
     field.appendChild(excel);
     excel.classList.add("excel");
   }
+
+  // Assign coordinates to each cell
+  let excel = document.getElementsByClassName("excel");
+  let x = 1;
+  let y = inputHeight;
+
+  for (let i = 0; i < excel.length; i++) {
+    if (x > inputWidth) {
+      x = 1;
+      y--;
+    }
+    excel[i].setAttribute("posX", x);
+    excel[i].setAttribute("posY", y);
+    x++;
+  }
 };
