@@ -118,12 +118,13 @@
   // height: 400px;
   margin: 0 auto;
   margin-bottom: 15px;
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   background-color: $color-black-field;
   border-radius: 5px;
   border: 10px solid $color-black-field;
   box-shadow: $box-shadow-field;
+  box-sizing: unset;
 }
 
 .excel {
