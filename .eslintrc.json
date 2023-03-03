@@ -21,6 +21,7 @@
       "class-methods-use-this": ["error", { "exceptMethods": ["render"] }], // rule is aimed to flag class methods that do not use thiss
       "space-infix-ops": ["off", { "int32Hint": false }],
       "no-unused-expressions": "off", // rule aims to eliminate unused expressions which have no effect on the state of the program.
+      "no-plusplus": "off", // disallow the unary operators ++ and --
       "linebreak-style": 0,
       "global-require": 0,
       "eslint linebreak-style": [0, "error", "windows"]
