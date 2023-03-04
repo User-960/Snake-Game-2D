@@ -19,6 +19,8 @@ let inputWidth;
 let inputHeight;
 let sizeField;
 
+let snakeBody = [];
+
 document.querySelector(".game__btn-input").onclick = () => {
   inputWidth = +(document.querySelector(".input-width").value);
   inputHeight = +(document.querySelector(".input-height").value);
@@ -56,4 +58,31 @@ document.querySelector(".game__btn-input").onclick = () => {
     cell[i].setAttribute("posY", y);
     x++;
   }
+
+  // Create a snake and generate random coordinates for the snake
+  function createSnake() {
+    function generateSnake() {
+      let posX = Math.round(Math.random() * (inputWidth - 3) + 3);
+      let posY = Math.round(Math.random() * (inputHeight - 1) + 1);
+      return [posX, posY];
+    }
+
+    // змейка это массив из 3х соседних эелементов
+    let coordinatesSnake = generateSnake(); // возвразает массив с координатами
+
+    snakeBody = [
+      document.querySelector("[posX = \"" + coordinatesSnake[0] + "\"][posY = \"" + coordinatesSnake[1] + "\"]"),
+      document.querySelector("[posX = \"" + (coordinatesSnake[0] - 1) + "\"][posY = \"" + coordinatesSnake[1] + "\"]"),
+      document.querySelector("[posX = \"" + (coordinatesSnake[0] - 2) + "\"][posY = \"" + coordinatesSnake[1] + "\"]")
+    ];
+
+    // отрисовка змейки
+    for (let i = 0; i < snakeBody.length; i++) {
+      snakeBody[i].classList.add("snake__body");
+    }
+
+    snakeBody[0].classList.add("snake__head");
+  }
+
+  createSnake();
 };
