@@ -8,6 +8,11 @@ imgLogo.src = iconLogo;
 imgLogo.alt = "logo";
 gameForm.insertAdjacentElement("afterbegin", imgLogo);
 
+// snake control variables
+let interval; // interval for playing frames
+let direction = "right"; // this variable is used to ensure that after the restart the snake had the initial direction where to move
+// let steps = false;
+
 // create a field for the game and add to the document and assign a class.
 let gameInner = document.querySelector(".game__inner");
 let field = document.createElement("div");
@@ -108,4 +113,87 @@ document.querySelector(".game__btn-input").onclick = () => {
   }
 
   createApple();
+
+    // функция чтобы начать игру заного
+  function refreshGame() {
+    if (snakeBody[0].classList.contains("stop")) {
+      for (let i = 0; i < snakeBody.length; i++) {
+        snakeBody[i].classList.remove("snake__body");
+      }
+      snakeBody[0].classList.remove("snake__head");
+      snakeBody[0].classList.remove("stop");
+      apple.classList.remove("apple");
+
+      direction = "right";
+      createSnake();
+      createApple();
+    }
+
+    interval = setInterval(move, 100);
+  }
+
+  function move() {
+    let snakeCoordinates = [snakeBody[0].getAttribute("posX"), snakeBody[0].getAttribute("posY")];
+    snakeBody[0].classList.remove("snake__head");
+    snakeBody[snakeBody.length - 1].classList.remove("snake__body");
+    snakeBody.pop();
+
+    // write the movement of the snake across the field using the coordinates, and also write the script for crossing the borders
+    if (direction == "right") {
+      if (snakeCoordinates[0] < inputWidth) {
+        snakeBody.unshift(document.querySelector("[posX = \"" + (+snakeCoordinates[0] + 1) + "\"][posY = \"" + snakeCoordinates[1] + "\"]"));
+      } else {
+        snakeBody.unshift(document.querySelector("[posX = \"1\"][posY = \"" + snakeCoordinates[1] + "\"]"));
+      }
+    } else if (direction == "left") {
+      if (snakeCoordinates[0] > 1) {
+        snakeBody.unshift(document.querySelector("[posX = \"" + (+snakeCoordinates[0] - 1) + "\"][posY = \"" + snakeCoordinates[1] + "\"]"));
+      } else {
+        snakeBody.unshift(document.querySelector(`[posX = "${inputWidth}"][posY = "` + snakeCoordinates[1] + "\"]"));
+      }
+    } else if (direction == "up") {
+      if (snakeCoordinates[1] < inputHeight) {
+        snakeBody.unshift(document.querySelector("[posX = \"" + snakeCoordinates[0] + "\"][posY = \"" + (+snakeCoordinates[1] + 1) + "\"]"));
+      } else {
+        snakeBody.unshift(document.querySelector("[posX = \"" + snakeCoordinates[0] + "\"][posY = \"1\"]"));
+      }
+    } else if (direction == "down") {
+      if (snakeCoordinates[1] > 1) {
+        snakeBody.unshift(document.querySelector("[posX = \"" + snakeCoordinates[0] + "\"][posY = \"" + (+snakeCoordinates[1] - 1) + "\"]"));
+      } else {
+        snakeBody.unshift(document.querySelector("[posX = \"" + snakeCoordinates[0] + `"][posY = "${inputHeight}"]`));
+      }
+    }
+
+    // end game condition
+    if (snakeBody[0].classList.contains("snake__body")) {
+      snakeBody[0].classList.add("stop");
+
+      // snake stop
+      clearInterval(interval);
+
+      // restart the game
+      refreshGame();
+    }
+
+    snakeBody[0].classList.add("snake__head");
+    for (let i = 0; i < snakeBody.length; i++) {
+      snakeBody[i].classList.add("snake__body");
+    }
+
+    // condition if the coordinates of the snake and the apple are the same
+    if (snakeBody[0].getAttribute("posX") == apple.getAttribute("posX") && snakeBody[0].getAttribute("posY") == apple.getAttribute("posY")) {
+      apple.classList.remove("apple");
+
+      // increase the snake by one cell
+      let plusBodyX = snakeBody[snakeBody.length - 1].getAttribute("posX");
+      let plusBodyY = snakeBody[snakeBody.length - 1].getAttribute("posY");
+      snakeBody.push(document.querySelector("[posX = \"" + plusBodyX + "\"][posY = \"" + plusBodyY + "\"]"));
+
+      // draw a new apple
+      createApple();
+    }
+
+    // steps = true;
+  }
 };

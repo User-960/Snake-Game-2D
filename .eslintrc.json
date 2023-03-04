@@ -22,7 +22,9 @@
       "space-infix-ops": ["off", { "int32Hint": false }],
       "no-unused-expressions": "off", // rule aims to eliminate unused expressions which have no effect on the state of the program.
       "no-plusplus": "off", // disallow the unary operators ++ and --
-      "no-alert": "off",
+      "no-alert": "off", // disallow the use of alert, confirm, and prompt
+      "eqeqeq": "off", // require the use of === and !==
+      "no-use-before-define": "off", // disallow the use of variables before they are defined
       "linebreak-style": 0,
       "global-require": 0,
       "eslint linebreak-style": [0, "error", "windows"]
