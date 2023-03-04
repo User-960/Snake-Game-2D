@@ -1,7 +1,9 @@
 import iconLogo from "../images/logo.png";
 
-// create a instance of Image and write the path to the image. Then insert into the document
 const gameForm = document.querySelector(".game__form");
+const CONTROL_PHONE = document.querySelector(".control-phone");
+
+// create a instance of Image and write the path to the image. Then insert into the document
 const imgLogo = new Image();
 imgLogo.classList.add("game__logo");
 imgLogo.src = iconLogo;
@@ -45,6 +47,10 @@ document.querySelector(".game__btn-input").onclick = () => {
   if (inputWidth > 3 && inputHeight > 3 && inputWidth < 100 && inputHeight < 100) {
     gameForm.style.display = "none";
     field.style.display = "flex";
+
+    if (window.innerWidth < 1080) {
+      CONTROL_PHONE.style.display = "flex";
+    }
 
     sizeField = inputWidth * inputHeight;
     field.style.width = `${inputWidth * 16}px`;
@@ -264,5 +270,39 @@ window.addEventListener("keydown", (e) => {
       direction = "right";
       steps = false;
     }
+  }
+});
+
+// phone control
+const BTN_UP = document.querySelector(".up");
+const BTN_DOWN = document.querySelector(".down");
+const BTN_LEFT = document.querySelector(".left");
+const BTN_RIGHT = document.querySelector(".right");
+
+BTN_UP.addEventListener("click", () => {
+  if (direction != "down") {
+    direction = "up";
+    steps = false;
+  }
+});
+
+BTN_DOWN.addEventListener("click", () => {
+  if (direction != "up") {
+    direction = "down";
+    steps = false;
+  }
+});
+
+BTN_LEFT.addEventListener("click", () => {
+  if (direction != "right") {
+    direction = "left";
+    steps = false;
+  }
+});
+
+BTN_RIGHT.addEventListener("click", () => {
+  if (direction != "left") {
+    direction = "right";
+    steps = false;
   }
 });
