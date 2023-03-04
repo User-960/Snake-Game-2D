@@ -14,7 +14,7 @@ const BTN_RESTART = document.querySelector(".game__btn-restart");
 // snake control variables
 let interval; // interval for playing frames
 let direction = "right"; // this variable is used to ensure that after the restart the snake had the initial direction where to move
-// let steps = false;
+let steps = false;
 
 // create a field for the game and add to the document and assign a class.
 const GAME_INNER = document.querySelector(".game__inner");
@@ -197,7 +197,7 @@ document.querySelector(".game__btn-input").onclick = () => {
       createApple();
     }
 
-    // steps = true;
+    steps = true;
   }
 
   BTN_RESTART.addEventListener("click", () => {
@@ -208,3 +208,22 @@ document.querySelector(".game__btn-input").onclick = () => {
   refreshGame();
   });
 };
+
+window.addEventListener("keydown", (e) => {
+  // react to arrow clicks only if steps == true. Until the next move is made, the other arrows will not work. It has to do with code reading. The move function must complete and steps == true. Otherwise there will be a bug with fast switching of arrows. The snake can bury itself
+  if (steps == true) {
+    if (e.code == "KeyW" && direction != "down") {
+      direction = "up";
+      steps = false;
+    } else if (e.code == "KeyA" && direction != "right") {
+      direction = "left";
+      steps = false;
+    } else if (e.code == "KeyS" && direction != "up") {
+      direction = "down";
+      steps = false;
+    } else if (e.code == "KeyD" && direction != "left") {
+      direction = "right";
+      steps = false;
+    }
+  }
+});
