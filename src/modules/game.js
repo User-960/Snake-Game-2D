@@ -20,6 +20,7 @@ let inputHeight;
 let sizeField;
 
 let snakeBody = [];
+let apple = null;
 
 document.querySelector(".game__btn-input").onclick = () => {
   inputWidth = +(document.querySelector(".input-width").value);
@@ -61,14 +62,14 @@ document.querySelector(".game__btn-input").onclick = () => {
 
   // Create a snake and generate random coordinates for the snake
   function createSnake() {
+    // generate random coordinates for the snake
     function generateSnake() {
       let posX = Math.round(Math.random() * (inputWidth - 3) + 3);
       let posY = Math.round(Math.random() * (inputHeight - 1) + 1);
       return [posX, posY];
     }
 
-    // змейка это массив из 3х соседних эелементов
-    let coordinatesSnake = generateSnake(); // возвразает массив с координатами
+    let coordinatesSnake = generateSnake();
 
     snakeBody = [
       document.querySelector("[posX = \"" + coordinatesSnake[0] + "\"][posY = \"" + coordinatesSnake[1] + "\"]"),
@@ -76,7 +77,7 @@ document.querySelector(".game__btn-input").onclick = () => {
       document.querySelector("[posX = \"" + (coordinatesSnake[0] - 2) + "\"][posY = \"" + coordinatesSnake[1] + "\"]")
     ];
 
-    // отрисовка змейки
+    // drawing a snake
     for (let i = 0; i < snakeBody.length; i++) {
       snakeBody[i].classList.add("snake__body");
     }
@@ -85,4 +86,26 @@ document.querySelector(".game__btn-input").onclick = () => {
   }
 
   createSnake();
+
+  // Create an apple and generate random coordinates for the apple, which are different from the coordinates of the snake
+  function createApple() {
+    function generateApple() {
+      let posX = Math.round(Math.random() * (inputWidth - 1) + 1);
+      let posY = Math.round(Math.random() * (inputHeight - 1) + 1);
+      return [posX, posY];
+    }
+
+    let coordinatesApple = generateApple();
+    apple = document.querySelector("[posX = \"" + coordinatesApple[0] + "\"][posY = \"" + coordinatesApple[1] + "\"]");
+
+    // if the coordinates of the apple and the snake are the same, then we generate the apple again
+    while (apple.classList.contains("snake__body")) {
+      coordinatesApple = generateApple();
+      apple = document.querySelector("[posX = \"" + coordinatesApple[0] + "\"][posY = \"" + coordinatesApple[1] + "\"]");
+    }
+
+    apple.classList.add("apple");
+  }
+
+  createApple();
 };
