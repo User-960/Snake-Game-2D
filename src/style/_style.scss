@@ -66,6 +66,11 @@
   outline-style: solid;
 }
 
+.input-width,
+.input-height::placeholder {
+  font-size: 14px;
+}
+
 .game {
   display: flex;
   flex-direction: column;
@@ -117,7 +122,7 @@
   // width: 320px;
   // height: 400px;
   margin: 0 auto;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
   display: none;
   flex-wrap: wrap;
   background-color: $color-black-field;
