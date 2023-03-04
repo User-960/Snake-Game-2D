@@ -132,3 +132,16 @@
   height: 16px;
   background-image: url("../images/bg-cell.svg");
 }
+
+.snake {
+  &__body {
+    background: $color-red-snake-body;
+    background-size: cover;
+    // border-radius: 30%;
+  }
+  &__head {
+    background: $color-red-snake-head;
+    background-size: cover;
+    // border-radius: 10%;
+  }
+}
