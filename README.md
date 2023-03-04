@@ -1,9 +1,25 @@
-# WEBPACK
+# Snake-Game-2D
+The main purpose of the project is to write the project based on Functional Programming paradigm. The project itself is a Snake Game in 2D. At the start of the game, a field appears on which a snake and an apple are drawn. Each time a snake crosses a cell with an apple, the snake increases in size by one cell.
+The Snake-Game-2D is built on the Webpack.
 
-To install packages, use the command
+What is used:
+
+- Programming languages: HTML, CSS, JavaScript ES6;
+- Bundler: Webpack;
+- Preprocessor: SCSS;
+- Libraries: Babel, ESLint;
+
+To clone repository
+```shell
+git clone https://github.com/User-960/Snake-Game-2D.git
+```
+
+To install packages
 ```shell
 npm install
 ```
+***
+\* Before start project you need to make file `.env` in root of project and copy from file `.env.example` variables with meanings in new file. Or you can write your own meanings for variables in new file `.env`.
 
 ## Commands
 
