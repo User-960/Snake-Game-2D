@@ -1,24 +1,19 @@
 import iconLogo from "../images/logo.png";
-
-const gameForm = document.querySelector(".game__form");
-const CONTROL_PHONE = document.querySelector(".control-phone");
+import {
+ GAME_FORM, CONTROL_PHONE, SCORE_BLOCK, BEST_SCORE_BLOCK, BTN_RESTART, GAME_INNER, BTN_UP, BTN_DOWN, BTN_LEFT, BTN_RIGHT
+} from "../constants/root";
 
 // create a instance of Image and write the path to the image. Then insert into the document
 const imgLogo = new Image();
 imgLogo.classList.add("game__logo");
 imgLogo.src = iconLogo;
 imgLogo.alt = "logo";
-gameForm.insertAdjacentElement("afterbegin", imgLogo);
+GAME_FORM.insertAdjacentElement("afterbegin", imgLogo);
 
 // score and best score
-const SCORE_BLOCK = document.querySelector(".game__score .game__score-count");
-const BEST_SCORE_BLOCK = document.querySelector(".game__best-game-score .game__best-score-count");
 let score = 0;
 let scoreDesk = [];
 let bestScore;
-
-// кнопка перезапуска игры
-const BTN_RESTART = document.querySelector(".game__btn-restart");
 
 // snake control variables
 let interval; // interval for playing frames
@@ -26,7 +21,6 @@ let direction = "right"; // this variable is used to ensure that after the resta
 let steps = false;
 
 // create a field for the game and add to the document and assign a class.
-const GAME_INNER = document.querySelector(".game__inner");
 let field = document.createElement("div");
 GAME_INNER.after(field);
 field.classList.add("field");
@@ -45,10 +39,10 @@ document.querySelector(".game__btn-input").onclick = () => {
 
   // write the field sizes based on the data received from the form
   if (inputWidth > 3 && inputHeight > 3 && inputWidth < 100 && inputHeight < 100) {
-    gameForm.style.display = "none";
+    GAME_FORM.style.display = "none";
     field.style.display = "flex";
 
-    if (window.innerWidth < 1080) {
+    if (window.innerWidth < 1040) {
       CONTROL_PHONE.style.display = "flex";
     }
 
@@ -274,11 +268,6 @@ window.addEventListener("keydown", (e) => {
 });
 
 // phone control
-const BTN_UP = document.querySelector(".up");
-const BTN_DOWN = document.querySelector(".down");
-const BTN_LEFT = document.querySelector(".left");
-const BTN_RIGHT = document.querySelector(".right");
-
 BTN_UP.addEventListener("click", () => {
   if (direction != "down") {
     direction = "up";
