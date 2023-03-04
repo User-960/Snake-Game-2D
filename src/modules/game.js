@@ -8,6 +8,13 @@ imgLogo.src = iconLogo;
 imgLogo.alt = "logo";
 gameForm.insertAdjacentElement("afterbegin", imgLogo);
 
+// score and best score
+const SCORE_BLOCK = document.querySelector(".game__score .game__score-count");
+const BEST_SCORE_BLOCK = document.querySelector(".game__best-game-score .game__best-score-count");
+let score = 0;
+let scoreDesk = [];
+let bestScore;
+
 // кнопка перезапуска игры
 const BTN_RESTART = document.querySelector(".game__btn-restart");
 
@@ -117,7 +124,32 @@ document.querySelector(".game__btn-input").onclick = () => {
 
   createApple();
 
-    // функция чтобы начать игру заного
+  // draw score
+  function drawScore() {
+    SCORE_BLOCK.innerHTML = score;
+  }
+
+  // draw best score
+  function drawBestScore() {
+    BEST_SCORE_BLOCK.innerHTML = `Record: ${localStorage.getItem("bestScore")}`;
+  }
+
+  // scoring
+  function incScore() {
+    score++;
+    drawScore();
+  }
+
+  // best scoring
+  function incBestScore() {
+    scoreDesk.push(score);
+    scoreDesk.sort((a, b) => b - a);
+    bestScore = scoreDesk[0];
+    localStorage.setItem("bestScore", bestScore);
+    drawBestScore();
+  }
+
+  // function to restart the game
   function refreshGame() {
     if (snakeBody[0].classList.contains("stop")) {
       for (let i = 0; i < snakeBody.length; i++) {
@@ -130,6 +162,9 @@ document.querySelector(".game__btn-input").onclick = () => {
       direction = "right";
       createSnake();
       createApple();
+
+      score = 0;
+      drawScore();
     }
 
     interval = setInterval(move, 100);
@@ -175,6 +210,8 @@ document.querySelector(".game__btn-input").onclick = () => {
       // snake stop
       clearInterval(interval);
 
+      incBestScore();
+
       // restart the game
       refreshGame();
     }
@@ -192,6 +229,8 @@ document.querySelector(".game__btn-input").onclick = () => {
       let plusBodyX = snakeBody[snakeBody.length - 1].getAttribute("posX");
       let plusBodyY = snakeBody[snakeBody.length - 1].getAttribute("posY");
       snakeBody.push(document.querySelector("[posX = \"" + plusBodyX + "\"][posY = \"" + plusBodyY + "\"]"));
+
+      incScore();
 
       // draw a new apple
       createApple();
