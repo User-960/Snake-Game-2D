@@ -38,7 +38,7 @@ document.querySelector(".game__btn-input").onclick = () => {
   inputHeight = +(document.querySelector(".input-height").value);
 
   // write the field sizes based on the data received from the form
-  if (inputWidth > 3 && inputHeight > 3 && inputWidth < 100 && inputHeight < 100) {
+  if (inputWidth > 3 && inputHeight > 3 && inputWidth <= 18 && inputHeight <= 32) {
     GAME_FORM.style.display = "none";
     field.style.display = "flex";
 

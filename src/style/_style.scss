@@ -1,12 +1,13 @@
 .game {
   &__form {
     width: 280px;
-    height: 290px;
+    height: 388px;
     background-color: $color-black-field;
     position: relative;
     margin: auto;
     padding: $spacing-small;
     border-radius: 15px;
+    box-shadow: $box-shadow-field;
   }
   &__logo {
     width: 40px;
@@ -23,6 +24,8 @@
   &__form-width,
   &__form-height {
     padding: $spacing-small;
+    display: flex;
+    flex-direction: column;
   }
   &__btn-input {
     border: 0;
@@ -46,12 +49,12 @@
   font-size: 14px;
 }
 
-.input-width__title {
-  margin-right: 27px;
-}
-
-.input-height__title {
-  margin-right: 23px;
+.input-width__pre-title,
+.input-height__pre-title {
+  color: $color-white;
+  font-size: 12px;
+  margin: 11px 0;
+  font-style: italic;
 }
 
 .input-width,
@@ -119,8 +122,6 @@
 }
 
 .field {
-  // width: 320px;
-  // height: 400px;
   margin: 0 auto;
   margin-bottom: 30px;
   display: none;
@@ -142,12 +143,10 @@
   &__body {
     background: $color-red-snake-body;
     background-size: cover;
-    // border-radius: 30%;
   }
   &__head {
     background: $color-red-snake-head;
     background-size: cover;
-    // border-radius: 10%;
   }
 }
 
