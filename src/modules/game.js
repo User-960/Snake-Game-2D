@@ -8,15 +8,18 @@ imgLogo.src = iconLogo;
 imgLogo.alt = "logo";
 gameForm.insertAdjacentElement("afterbegin", imgLogo);
 
+// кнопка перезапуска игры
+const BTN_RESTART = document.querySelector(".game__btn-restart");
+
 // snake control variables
 let interval; // interval for playing frames
 let direction = "right"; // this variable is used to ensure that after the restart the snake had the initial direction where to move
 // let steps = false;
 
 // create a field for the game and add to the document and assign a class.
-let gameInner = document.querySelector(".game__inner");
+const GAME_INNER = document.querySelector(".game__inner");
 let field = document.createElement("div");
-gameInner.after(field);
+GAME_INNER.after(field);
 field.classList.add("field");
 
 // form for entering data for fields
@@ -196,4 +199,12 @@ document.querySelector(".game__btn-input").onclick = () => {
 
     // steps = true;
   }
+
+  BTN_RESTART.addEventListener("click", () => {
+  clearInterval(interval);
+
+  snakeBody[0].classList.add("stop");
+
+  refreshGame();
+  });
 };
