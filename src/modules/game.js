@@ -37,23 +37,23 @@ document.querySelector(".game__btn-input").onclick = () => {
   }
 
   for (let i = 1; i < sizeField + 1; i++) {
-    let excel = document.createElement("div");
-    field.appendChild(excel);
-    excel.classList.add("excel");
+    let cellItem = document.createElement("div");
+    field.appendChild(cellItem);
+    cellItem.classList.add("cell");
   }
 
   // Assign coordinates to each cell
-  let excel = document.getElementsByClassName("excel");
+  let cell = document.getElementsByClassName("cell");
   let x = 1;
   let y = inputHeight;
 
-  for (let i = 0; i < excel.length; i++) {
+  for (let i = 0; i < cell.length; i++) {
     if (x > inputWidth) {
       x = 1;
       y--;
     }
-    excel[i].setAttribute("posX", x);
-    excel[i].setAttribute("posY", y);
+    cell[i].setAttribute("posX", x);
+    cell[i].setAttribute("posY", y);
     x++;
   }
 };
