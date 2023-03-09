@@ -22,7 +22,7 @@ To install packages
 npm install
 ```
 ***
-\* Before start project you need to make file `.env` in root of project and copy from file `.env.example` variables with meanings in new file. Or you can write your own meanings for variables in new file `.env`.
+\* Before start project you need to make file `.env` in root of project and copy from file `.env.example` variables with meanings in new file. Or you can write your own meanings for variables in file `.env`
 
 ## Commands
 
